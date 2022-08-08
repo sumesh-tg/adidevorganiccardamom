@@ -5,6 +5,8 @@ import { BlogListComponent } from './body/blog-list/blog-list.component';
 import { ContactUsComponent } from './body/contact-us/contact-us.component';
 import { FooterComponent } from './footer/footer.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { AddStockDetailsComponent } from './forms/add-stock-details/add-stock-details.component';
+import { AddQualityReportComponent } from './forms/add-quality-report/add-quality-report.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,6 +14,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
+  enableWhatsappFixed:boolean=true;
   @ViewChild(SidebarComponent, { read: ElementRef }) private sidebarCloseBtn: ElementRef;
   toggleAddVendorBtn = false;
   togglePageInfo=false;
@@ -28,5 +31,11 @@ export class DashboardComponent implements OnInit {
     setTimeout(() => {
       this.sidebarCloseBtn.nativeElement.click();
       }, 200);
+
+      if(componentRef instanceof AddStockDetailsComponent || componentRef instanceof AddQualityReportComponent){
+        this.enableWhatsappFixed=false
+      }else{
+        this.enableWhatsappFixed=true
+      }
   }
 }

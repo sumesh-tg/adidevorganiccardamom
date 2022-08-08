@@ -9,6 +9,8 @@ import { BlogPostComponent } from './components/dashboard/body/blog-post/blog-po
 import { HomePageComponent } from './components/dashboard/body/home-page/home-page.component';
 import { ContactUsComponent } from './components/dashboard/body/contact-us/contact-us.component';
 import { DeletePostComponent } from './components/dashboard/forms/delete-post/delete-post.component';
+import { AddStockDetailsComponent } from './components/dashboard/forms/add-stock-details/add-stock-details.component';
+import { AddQualityReportComponent } from './components/dashboard/forms/add-quality-report/add-quality-report.component';
 
 
 const routes: Routes = [
@@ -23,6 +25,8 @@ const routes: Routes = [
     {path:'blog-post',component:BlogPostComponent},
     {path:'delete-post',component:DeletePostComponent},
     {path:'preview',component:BlogPostComponent},
+    {path:'add-stock',component:AddStockDetailsComponent},
+    {path:'add-quality',component:AddQualityReportComponent},
     {path:'**',component:BlogListComponent}
   ]} 
 ];
