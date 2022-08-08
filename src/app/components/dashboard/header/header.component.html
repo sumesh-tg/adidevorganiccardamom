@@ -1,27 +1,31 @@
 <header>
     <div class="page-header">
         <!-- Fixed navbar -->
-        <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light  border-bottom border-primary">
-            <a class="navbar-brand" href="#"><img src="assets/images/logo.png" placeholder="Adidev Organic Cardamom"></a>
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light  border-bottom border-primary">
+            <div class="container">
+            <a class="navbar-brand" href="#"><img id="logo-cardamom" src="assets/images/logo.png" placeholder="Adidev Organic Cardamom"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <ul class="navbar-nav mr-auto">
+            <div class="collapse navbar-collapse w-100 dual-collapse2 order-1 order-md-0" id="navbarCollapse">
+                <ul class="navbar-nav ml-auto text-center">
                     <li class="main-menu nav-item active" routerLinkActive="active-page">
-                        <a class="nav-link" routerLink="/dashboard/home" routerLinkActive="active"><i
-                                class="material-icons-outlined">home</i>Home</a>
+                        <a class="nav-link" routerLink="/dashboard/home" routerLinkActive="active">
+                            <!-- <i class="material-icons-outlined">home</i> -->
+                            Home</a>
                         <!-- <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a> -->
                     </li>
                     <li class="main-menu nav-item" routerLinkActive="active-page">
-                        <a class="nav-link" routerLink="/aboutus" routerLinkActive="active"><i
-                                class="material-icons-outlined">info</i>About Us</a>
+                        <a class="nav-link" routerLink="/aboutus" routerLinkActive="active">
+                            <!-- <i class="material-icons-outlined">info</i> -->
+                                About Us</a>
                         <!-- <a class="nav-link" href="#">About Us</a> -->
                     </li>
                     <li class="main-menu nav-item" routerLinkActive="active-page">
-                        <a class="nav-link" routerLink="/dashboard/contact-us" routerLinkActive="active"><i
-                                class="material-icons-outlined">mail</i>Contact Us</a>
+                        <a class="nav-link" routerLink="/dashboard/contact-us" routerLinkActive="active">
+                            <!-- <i class="material-icons-outlined">mail</i> -->
+                            Contact Us</a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link" id="dark-theme-toggle"><i
@@ -29,11 +33,12 @@
                                 class="material-icons">brightness_2</i></a>
                     </li>
                 </ul>
-                <form class="form-inline mt-2 mt-md-0">
+                <!-- <form class="form-inline mt-2 mt-md-0">
                     <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form>
+                </form> -->
             </div>
+        </div>
         </nav>
     </div>
 </header>
