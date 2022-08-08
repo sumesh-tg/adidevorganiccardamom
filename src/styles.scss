@@ -609,7 +609,7 @@ h6 {
 }
 
 .page-container {
-    margin-left: 280px;
+    // margin-left: 280px;
     width: 100%;
     position: relative;
     overflow-x: hidden
@@ -930,7 +930,7 @@ h6 {
 }
 
 .page-header .navbar {
-    padding: 35px 35px 25px
+    // padding: 35px 35px 25px
 }
 
 .page-header .navbar-collapse .navbar-nav {
@@ -4303,7 +4303,8 @@ tr.group {
         visibility: visible
     }
     .page-header .navbar-collapse {
-        display: none!important
+        // display: none!important
+        background-color: #f8faf9 !important;
     }
     .page-header .navbar-search {
         margin-left: auto;
