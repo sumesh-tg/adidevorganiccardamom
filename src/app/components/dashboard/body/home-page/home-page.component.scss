@@ -1,3 +1,21 @@
 #carouselExampleIndicators {
-    margin-top: 7em !important;
+    margin-top: 7.5em !important;
+}
+@media (max-width:1200px) {
+    #carouselExampleIndicators{
+        margin-top: 1em !important;
+    }
+}
+@media (max-width:991px) {
+    #carouselExampleIndicators{
+        margin-top: 1em !important;
+    }
+}
+@media (max-width:767px) {
+    #carouselExampleIndicators{
+        margin-top: 1em !important;
+    }
+    #carouselExampleIndicators img.d-block.w-100 {
+        height: 277px !important;
+    }
 }

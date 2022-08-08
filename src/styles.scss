@@ -4276,7 +4276,7 @@ tr.group {
         box-shadow: 0 0 1.25rem rgba(31, 45, 61, .04)
     }
     .page-header .navbar {
-        height: 66px;
+        height: 110px;
         padding: 5px 35px!important
     }
     .app-profile .page-header .navbar ul.navbar-nav>li>a:hover {
@@ -4345,6 +4345,9 @@ tr.group {
     .mailbox-item .mail-actions {
         margin-bottom: 30px
     }
+    #carouselExampleIndicators{
+        margin-top: 1em !important;
+    }
 }
 
 @media (max-width:767px) {
@@ -4358,7 +4361,7 @@ tr.group {
         margin-bottom: 20px
     }
     .page-header .navbar {
-        height: 66px;
+        height: 110px;
         padding: 5px 10px!important
     }
     .page-content .page-info .breadcrumb {
@@ -4396,6 +4399,9 @@ tr.group {
     }
     .mailbox-item-overlay {
         z-index: 100
+    }
+    #carouselExampleIndicators{
+        margin-top: 1em !important;
     }
 }
 
