@@ -8,3 +8,23 @@
 .nav-border-primary {
     border-color: #5fd0a5 !important;
 }
+@media (max-width:500px) {
+    #logo-cardamom{
+        width:350px !important;
+    }
+}
+@media (max-width:435px) {
+    #logo-cardamom{
+        width:300px !important;
+    }
+}
+@media (max-width:385px) {
+    #logo-cardamom{
+        width:250px !important;
+    }
+}
+@media (max-width:340px) {
+    #logo-cardamom{
+        width:180px !important;
+    }
+}

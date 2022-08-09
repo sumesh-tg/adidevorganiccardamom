@@ -11,13 +11,14 @@ import { ContactUsComponent } from './components/dashboard/body/contact-us/conta
 import { DeletePostComponent } from './components/dashboard/forms/delete-post/delete-post.component';
 import { AddStockDetailsComponent } from './components/dashboard/forms/add-stock-details/add-stock-details.component';
 import { AddQualityReportComponent } from './components/dashboard/forms/add-quality-report/add-quality-report.component';
+import { AocBlogComponent } from './components/dashboard/body/aoc-blog/aoc-blog.component';
 
 
 const routes: Routes = [
   {path:"",redirectTo:"/dashboard/home",pathMatch:"full"},
   {path:"dashboard" , component :DashboardComponent,children:[
     {path:"",redirectTo:"/dashboard/blog",pathMatch:"full"},
-    {path:'blog',component:BlogListComponent},
+    {path:'blog',component:AocBlogComponent},
     {path:'home',component:HomePageComponent},
     {path:'contact-us',component:ContactUsComponent},
     {path:'add-vendor',component:AddVendorComponent},
