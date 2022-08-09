@@ -6,18 +6,19 @@ export const environment = {
   production: false,
   apiUrl:"http://localhost:1337",
   firebaseConfig : {
-    apiKey: "AIzaSyBuOsLXEhcljv2Ikwcz46nyTvpoYBXBcBE",
-    authDomain: "aeonsstudycircle-web.firebaseapp.com",
-    databaseURL: "https://aeonsstudycircle-web.firebaseio.com",
-    projectId: "aeonsstudycircle-web",
-    storageBucket: "aeonsstudycircle-web.appspot.com",
-    messagingSenderId: "694514346883",
-    appId: "1:694514346883:web:c87ac9af8d120100efa4b6",
-    measurementId: "G-B6CVL4Y7P6"
+    apiKey: "AIzaSyCNPSIFhAgdCeYO9HtbtTKUXmMlDlZCnHk",
+    authDomain: "adidevorganiccardamom.firebaseapp.com",
+    projectId: "adidevorganiccardamom",
+    storageBucket: "adidevorganiccardamom.appspot.com",
+    messagingSenderId: "476846755194",
+    appId: "1:476846755194:web:56d5058227382627df5ac3",
+    measurementId: "G-RLCMB7J970"
   },
   postCollectionsName:"test_posts",
   quizCategoryCollectionName:"test_quiz_cat",
-  quizQuestionsCollectionName:"test_quiz_questions"
+  quizQuestionsCollectionName:"test_quiz_questions",
+  stockCollectionName:"test_stocks",
+  qualityReportCollectionName:"test_quality_report"
 };
 
 /*

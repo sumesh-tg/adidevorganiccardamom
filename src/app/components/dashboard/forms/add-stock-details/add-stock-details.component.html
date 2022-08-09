@@ -1,1 +1,133 @@
-<p>add-stock-details works!</p>
+<div class="row mt-5 pt-3" id="vendorCreation">
+    <div class="col-xl">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Add Stock Details</h5>
+                <p>Create & Edit stock details.</p>
+                <form name="form" #stockForm="ngForm" (ngSubmit)="stockForm.valid && submitAddStockForm()">
+                    <div class="form-row">
+                        <div class="form-group col-md-3">
+                            <label for="inputEmail4">Size</label>
+                            <input type="text" class="form-control" id="inputEmail4" required placeholder="" ng-blur="postForm.title.$validate()" [(ngModel)]="stockModel.size" name="size" #size="ngModel">
+                            <div *ngIf="stockForm.submitted && size.invalid" class="invalid-feedback d-block">
+                                <div *ngIf="size.errors.required">Size is required</div>
+                                <div *ngIf="size.errors.minlength">Minimum length 5 is required</div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="inputEmail4">Price</label>
+                            <input type="text" class="form-control" id="inputEmail4" required placeholder="" [(ngModel)]="stockModel.price" name="price" #price="ngModel">
+                            <div *ngIf="stockForm.submitted && price.invalid" class="invalid-feedback d-block">
+                                <div *ngIf="price.errors.required">Price is required</div>
+                                <div *ngIf="price.errors.minlength">Minimum length 5 is required</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-3">
+                            <label for="inputEmail4">Stock</label>
+                            <input type="text" class="form-control" id="inputEmail4" placeholder="" required [(ngModel)]="stockModel.stock" name="stock"  #stock="ngModel">
+                            <div *ngIf="stockForm.submitted && stock.invalid" class="invalid-feedback d-block">
+                                <div *ngIf="stock.errors.required">Expiry date is required</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <button type="submit" class="btn btn-primary float-right mr-3" [disabled]="loading">Submit
+                        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>    
+                    </button> -->
+                   <button type="submit" class="btn btn-primary float-right mr-3" [disabled]="!stockForm.valid || loading">Submit
+                        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>    
+                    </button> 
+                    <button type="submit" class="btn btn-secondary float-right mr-3" (click)="clearForm()">Clear</button>
+                </form>
+                <!-- <div class="custom-modal">
+                    <ng-template #postContent let-modal>
+                        <div class="modal-header">
+                          <h4 class="modal-title">Modal title</h4>
+                          <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+<app-preview></app-preview>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+                        </div>
+                      </ng-template>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Existing Stock Details</h5>
+                <p>All existing stock details are listed below. You can edit/delete data here!.</p>
+
+                <table class="table">
+                    <caption>List of stocks</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">
+                                <div class="custom-control custom-checkbox form-group">
+                                    <input type="checkbox" class="custom-control-input" id="mail1" [(ngModel)]="selectedAllChkBox" (change)="selectAllStocks();">
+                                    <label class="custom-control-label" for="mail1"></label>
+                                </div>
+                            </th>
+                            <th scope="col">ID</th>
+                            <th scope="col">Size</th>
+
+                            <th scope="col">Price</th>
+
+                            <th scope="col">Stock</th>
+                            <th scope="col">Created Date</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Action </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let stockModel of stockDetailsArray">
+                            <td>
+                                <div class="custom-control custom-checkbox form-group">
+                                    <input type="checkbox" class="custom-control-input" id="{{stockModel.id}}" [(ngModel)]="stockModel.selected">
+                                    <label class="custom-control-label" for="{{stockModel.id}}"></label>
+                                </div>
+                            </td>
+                            <!-- <th scope="row"><img src="{{baseUrl+stockModel.logoImg[0].url}}" width="100"></th> -->
+
+                            <td>{{stockModel.id}}  </td>
+                            <td>   {{stockModel.size}} </td>
+                            <td>  {{stockModel.price}} </td>
+                            <td>  {{stockModel.stock}} </td>
+                            <td>  {{stockModel.created_date}} </td>
+                           
+
+                            <!-- <td>{{ findPlan(vendor.planId) }}</td> -->
+
+                            <!-- <td><div class="p-3 mb-2 text-white" [ngStyle]="{'background-color':stockModel.themeColor}">{{stockModel.themeColor}}</div></td> -->
+                            <!-- <td>{{stockModel.uniqueKey}}</td> -->
+                            <td [ngClass]="{'text-success': stockModel.status === 1, 'text-danger':stockModel.status === 0 }">{{findStatus(stockModel.status)}}</td>
+                            <td>
+                                <div class="dropdown">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button"
+                                        id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                        aria-expanded="false">
+                                        Action
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" (click)="deactivateStock(stockModel)">Activate/De-activate</a>
+                                        <a class="dropdown-item"(click)="editStock(stockModel)">Edit</a>
+                                        <a class="dropdown-item"(click)="deleteStock(stockModel)">Delete</a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
