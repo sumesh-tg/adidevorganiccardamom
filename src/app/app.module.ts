@@ -39,6 +39,7 @@ import { QuizDashboardModule } from './quiz-dashboard/quiz-dashboard.module';
 import { AdminModule } from './admin/admin.module';
 import { AddStockDetailsComponent } from './components/dashboard/forms/add-stock-details/add-stock-details.component';
 import { AddQualityReportComponent } from './components/dashboard/forms/add-quality-report/add-quality-report.component';
+import { AocBlogComponent } from './components/dashboard/body/aoc-blog/aoc-blog.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,7 +63,8 @@ import { AddQualityReportComponent } from './components/dashboard/forms/add-qual
     ContactUsComponent,
     DeletePostComponent,
     AddStockDetailsComponent,
-    AddQualityReportComponent
+    AddQualityReportComponent,
+    AocBlogComponent
   ],
   imports: [
     BrowserModule,
