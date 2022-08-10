@@ -72,7 +72,8 @@ export class AddStockDetailsComponent implements OnInit {
   }
   submitAddStockForm() {
     this.loading = true;
-    if (this.stockModel.action === "edit") {
+    this.stockModel.updated_date=new Date();
+    if (this.stockModel.action == "edit") {
       this.stockService.updateStock(this.stockModel);
       this.toastr.success('Stock updated successfully!', 'Success');
       this.clearForm();

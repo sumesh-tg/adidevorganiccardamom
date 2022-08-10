@@ -5,7 +5,7 @@ export class StockDetailsModel {
     price:string;
     stock:string;
     sold:string;
-    created_date:Date;
+    created_date:any;
     updated_date:Date;
     created_by:string;
     updated_by:string;
