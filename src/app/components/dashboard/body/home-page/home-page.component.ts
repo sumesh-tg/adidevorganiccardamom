@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { SafeHtml } from '@angular/platform-browser';
+import { QualityReportModel } from 'src/app/models/quality-report-model';
 import { StockDetailsModel } from 'src/app/models/stock-details-model';
+import { QualityReportService } from 'src/app/services/quality-report.service';
 import { StockDetailsService } from 'src/app/services/stock-details.service';
 
 @Component({
@@ -14,6 +16,8 @@ export class HomePageComponent implements OnInit {
   selectedAllChkBox: any;
   stockDetailsArray: StockDetailsModel[];
   activeStockDetailsArray: StockDetailsModel[];
+  qualityReportsArray: QualityReportModel[];
+  qualityReportModel:QualityReportModel;
   config: any;
   html: SafeHtml;
   //Save first document in snapshot of items received
@@ -33,11 +37,15 @@ export class HomePageComponent implements OnInit {
   disable_prev: boolean = false;
 
   enableStockSection:boolean=false;
+  enableQualitySection:boolean=false;
   randColor:string="bg-primary";
 
-  constructor(private stockService: StockDetailsService) { }
+  constructor(private stockService: StockDetailsService,private qualityReportService: QualityReportService) { }
 
   ngOnInit(): void {
+
+    // Load stock detail
+
     this.stockService.getStocks().subscribe(data => {
       this.firstInResponse = data[0].payload.doc;
       this.lastInResponse = data[data.length - 1].payload.doc;
@@ -64,7 +72,38 @@ export class HomePageComponent implements OnInit {
         }
       }
     });
+
+    //Load quality report details
+
+    this.qualityReportService.getReports().subscribe(data=>{
+      this.firstInResponse = data[0].payload.doc;
+      this.lastInResponse = data[data.length - 1].payload.doc;
+      this.prev_strt_at = [];
+      this.pagination_clicked_count = 0;
+      this.disable_next = false;
+      this.disable_prev = false;
+      this.push_prev_startAt(this.firstInResponse);
+      this.qualityReportsArray = data.map(e => {
+        const data = e.payload.doc.data();
+        let id = e.payload.doc.id;
+        return { id, ...(data as Object) } as QualityReportModel;
+      });
+      console.log("Reports Data Homepage ::: ", this.qualityReportsArray);
+      if (this.qualityReportsArray.length > 0) {
+        this.qualityReportsArray = this.qualityReportsArray.filter(report => {
+          if (report.status === 1) {
+            return report;
+          }
+        });
+        console.log("Filtered report Homepage ::: ", this.qualityReportsArray);
+        if(this.qualityReportsArray.length>0){
+          this.enableQualitySection=true;
+          this.qualityReportModel=this.qualityReportsArray[0];
+        }
+      }
+    });
   }
+
   push_prev_startAt(prev_first_doc) {
     this.prev_strt_at.push(prev_first_doc);
   }
@@ -84,10 +123,13 @@ export class HomePageComponent implements OnInit {
     return this.prev_strt_at[this.pagination_clicked_count - 1];
   }
 
-  chooseBackgroundColor(){
-    var colors = ["bg-primary","bg-danger","bg-dark","bg-sky-blue","bg-red","bg-yellow","bg-pink","bg-dark-pink"];
-    this.randColor = colors[Math.floor(Math.random() * colors.length)];
+  chooseBackgroundColor(index){
+    var colors = ["bg-danger","bg-dark","bg-sky-blue","bg-red","bg-yellow","bg-pink","bg-dark-pink","bg-primary"];
+    // colors=colors.sort(() => Math.random() - 0.5);
+    this.randColor = colors[index]; 
     return this.randColor;
   }
+
+
 
 }

@@ -142,7 +142,8 @@
 
 
   <!-- Stock details -->
-  <div class="card text-center" *ngIf="enableStockSection">
+  <div class="card text-center" #stockDetailsSection2 id="stockDetailsSection" *ngIf="enableStockSection">
+    <input #stockDetailsSection id="stockDetailsSection">
     <div class="card-header">
       Stock Details
     </div>
@@ -150,7 +151,7 @@
       <div class="card-deck">
         <div class="card" *ngFor="let stock of activeStockDetailsArray;let index=index">
           <div style="width: 100%;height:180px"
-            class="text-light d-flex align-items-center justify-content-center" [ngClass]="chooseBackgroundColor()">
+            class="text-light d-flex align-items-center justify-content-center" [ngClass]="chooseBackgroundColor(index)">
             <h2 class="">{{stock.size}}mm</h2>
           </div>
           <div class="card-body">
@@ -197,14 +198,14 @@
   <!-- End stock details -->
 
   <!-- Quality analysis report -->
-  <div class="card">
+  <div class="card" #qualityReportSection id="qualityReportSection" *ngIf="enableQualitySection">
     <div class="card-body">
       <h5 class="card-title">Quality Analytical Report</h5>
       <p class="card-text">The quality of spices produced and processed from Regional Quality Evaluation Labarotary
         using the samples collected from our field and the results are shown below.</p>
       <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
     </div>
-    <img class="card-img-bottom" src="assets/images/pic1.jpg" alt="Card image cap" id="quality-report-img">
+    <img class="card-img-bottom" src="{{qualityReportModel.report_img_url}}" alt="Card image cap" id="quality-report-img">
   </div>
   <!-- end quality analysis report -->
   <!-- Content Row -->

@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { StockDetailsModel } from '../models/stock-details-model';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -34,7 +35,8 @@ export class StockDetailsService {
   }
   updateStock(stockModel: StockDetailsModel) {
     // delete stockModel.id;
-    this.firestore.doc(this.STOCK_COLLECTION_NAME + '/' + stockModel.id).update(stockModel);
+    // this.firestore.doc(this.STOCK_COLLECTION_NAME + '/' + stockModel.id).update(stockModel);
+    this.firestore.doc(this.STOCK_COLLECTION_NAME + "/" + stockModel.doc_id).update(stockModel);
   }
   deleteStock(stockModel: StockDetailsModel) {
     // return this.firestore.collection('posts').doc(postModel.id).delete().then(function() {

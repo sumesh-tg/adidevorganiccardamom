@@ -12,4 +12,5 @@ export class StockDetailsModel {
     selected?:boolean;
     status:number;
     action:string;
+    doc_id?:string;
 }

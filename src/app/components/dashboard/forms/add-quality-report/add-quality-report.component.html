@@ -1,1 +1,144 @@
-<p>add-quality-report works!</p>
+<div class="row mt-5 pt-3" id="vendorCreation">
+    <div class="col-xl">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Add Quality Analytical Reports</h5>
+                <p>Create & Edit Quality Analytical Report.</p>
+                <form name="form" #reportForm="ngForm" (ngSubmit)="reportForm.valid && submitQualityForm()">
+                    <div class="form-row">
+                        <div class="form-group col-md-3">
+                            <label for="inputEmail4">Laboratary Name</label>
+                            <input type="text" class="form-control" id="inputEmail4" required placeholder=""
+                                ng-blur="reportForm.lab_address.$validate()" [(ngModel)]="qualityReportModel.laboratary_name" name="laboratary_name"
+                                #laboratary_name="ngModel">
+                            <div *ngIf="reportForm.submitted && laboratary_name.invalid" class="invalid-feedback d-block">
+                                <div *ngIf="laboratary_name.errors.required">Laboratary Name is required</div>
+                                <div *ngIf="laboratary_name.errors.minlength">Minimum length 5 is required</div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="inputEmail4">Laboratary Address</label>
+                            <input type="text" class="form-control" id="inputEmail4" required placeholder=""
+                                [(ngModel)]="qualityReportModel.lab_address" name="lab_address" #lab_address="ngModel">
+                            <div *ngIf="reportForm.submitted && lab_address.invalid" class="invalid-feedback d-block">
+                                <div *ngIf="lab_address.errors.required">Laboratary Address is required</div>
+                                <div *ngIf="lab_address.errors.minlength">Minimum length 5 is required</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-3">
+                            <label for="inputEmail4">Description</label>
+                            <input type="text" class="form-control" id="inputEmail4" placeholder="" required
+                                [(ngModel)]="qualityReportModel.description" name="description" #description="ngModel">
+                            <div *ngIf="reportForm.submitted && description.invalid" class="invalid-feedback d-block">
+                                <div *ngIf="description.errors.required">Description is required</div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="inputEmail4">Quality Report image</label>
+                            <input type="File" class="form-control" id="inputEmail4" required placeholder="" (change)="handleFileInput($event.target.files)" [(ngModel)]="qualityReportModel.report_img_url" name="report_img_url" #report_img_url="ngModel">
+                            <div *ngIf="reportForm.submitted && report_img_url.invalid" class="invalid-feedback d-block">
+                                <div *ngIf="report_img_url.errors.required">Report image is required</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <button type="submit" class="btn btn-primary float-right mr-3" [disabled]="loading">Submit
+                        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>    
+                    </button> -->
+                    <button type="submit" class="btn btn-primary float-right mr-3"
+                        [disabled]="!reportForm.valid || loading">{{qualityReportModel.action === "edit"?"Update":"Submit"}}
+                        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                    </button>
+                    <button type="submit" class="btn btn-secondary float-right mr-3"
+                        (click)="clearForm()">Clear</button>
+                </form>
+                <!-- <div class="custom-modal">
+                    <ng-template #postContent let-modal>
+                        <div class="modal-header">
+                          <h4 class="modal-title">Modal title</h4>
+                          <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+<app-preview></app-preview>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+                        </div>
+                      </ng-template>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Existing Quality Report</h5>
+                <p>All existing quality reports are listed below. You can edit/delete here!.</p>
+                <div class="table-responsive">
+                    <table class="table">
+                        <caption>List of Quality Reports</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">
+                                    <div class="custom-control custom-checkbox form-group">
+                                        <input type="checkbox" class="custom-control-input" id="mail1"
+                                            [(ngModel)]="selectedAllChkBox" (change)="selectAllReports();">
+                                        <label class="custom-control-label" for="mail1"></label>
+                                    </div>
+                                </th>
+                                <th scope="col">Laboratary Name</th>
+                                <th scope="col">Laboratary Address</th>
+
+                                <th scope="col">Description</th>
+
+                                <th scope="col">Report Image</th>
+                                <th scope="col">Created Date</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Action </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let qualityReportModel of qualityReportsArray">
+                                <td>
+                                    <div class="custom-control custom-checkbox form-group">
+                                        <input type="checkbox" class="custom-control-input" id="{{qualityReportModel.id}}"
+                                            [(ngModel)]="qualityReportModel.selected">
+                                        <label class="custom-control-label" for="{{qualityReportModel.id}}"></label>
+                                    </div>
+                                </td>
+
+                                <td>{{qualityReportModel.laboratary_name}} </td>
+                                <td> {{qualityReportModel.lab_address}} </td>
+                                <td> {{qualityReportModel.description}} </td>
+                                <td> <img src="{{qualityReportModel.report_img_url}}" width="220" height="200" alt="Blog Image"></td>
+                                <td> {{qualityReportModel.created_date.seconds * 1000 | date:'full'}} </td>
+                                <td
+                                    [ngClass]="{'text-success': qualityReportModel.status === 1, 'text-danger':qualityReportModel.status === 0 }">
+                                    {{qualityReportModel.status === 1?"Active":"Deactivated"}}</td>
+                                <td>
+                                    <div class="dropdown">
+                                        <button class="btn btn-secondary dropdown-toggle" type="button"
+                                            id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                            aria-expanded="false">
+                                            Action
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <a class="dropdown-item"
+                                                (click)="deactivateReport(qualityReportModel)">{{qualityReportModel.status === 1?"Deactivate":"Activate"}}</a>
+                                            <a class="dropdown-item" (click)="editReport(qualityReportModel)">Edit</a>
+                                            <a class="dropdown-item" (click)="deleteReport(qualityReportModel)">Delete</a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
