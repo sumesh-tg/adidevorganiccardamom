@@ -9,7 +9,7 @@
       <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
       <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
     </ol>
-    <div class="carousel-inner">
+    <div class="carousel-inner" #check>
       <div class="carousel-item active">
         <img class="d-block w-100" src="assets/images/pic1.jpg" alt="First slide" height="450">
         <div class="carousel-caption d-none d-md-block">
@@ -142,8 +142,7 @@
 
 
   <!-- Stock details -->
-  <div class="card text-center" #stockDetailsSection2 id="stockDetailsSection" *ngIf="enableStockSection">
-    <input #stockDetailsSection id="stockDetailsSection">
+  <div class="card text-center" #stockDetailsSection id="stockDetailsSection" *ngIf="enableStockSection">
     <div class="card-header">
       Stock Details
     </div>
