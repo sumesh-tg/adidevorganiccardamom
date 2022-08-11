@@ -39,7 +39,7 @@
                         <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>    
                     </button> -->
                     <button type="submit" class="btn btn-primary float-right mr-3"
-                        [disabled]="!stockForm.valid || loading">Submit
+                        [disabled]="!stockForm.valid || loading">{{stockModel.action === "edit"?"Update":"Submit"}}
                         <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
                     </button>
                     <button type="submit" class="btn btn-secondary float-right mr-3"
@@ -109,7 +109,7 @@
                                 <td> {{stockModel.size}} </td>
                                 <td> {{stockModel.price}} </td>
                                 <td> {{stockModel.stock}} </td>
-                                <td> {{stockModel.created_date}} </td>
+                                <td> {{stockModel.created_date.seconds * 1000 | date:'full'}} </td>
 
 
                                 <!-- <td>{{ findPlan(vendor.planId) }}</td> -->
@@ -118,7 +118,7 @@
                                 <!-- <td>{{stockModel.uniqueKey}}</td> -->
                                 <td
                                     [ngClass]="{'text-success': stockModel.status === 1, 'text-danger':stockModel.status === 0 }">
-                                    {{findStatus(stockModel.status)}}</td>
+                                    {{stockModel.status === 1?"Active":"Deactivated"}}</td>
                                 <td>
                                     <div class="dropdown">
                                         <button class="btn btn-secondary dropdown-toggle" type="button"
@@ -128,7 +128,7 @@
                                         </button>
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                             <a class="dropdown-item"
-                                                (click)="deactivateStock(stockModel)">Activate/De-activate</a>
+                                                (click)="deactivateStock(stockModel)">{{stockModel.status === 1?"Deactivate":"Activate"}}</a>
                                             <a class="dropdown-item" (click)="editStock(stockModel)">Edit</a>
                                             <a class="dropdown-item" (click)="deleteStock(stockModel)">Delete</a>
                                         </div>

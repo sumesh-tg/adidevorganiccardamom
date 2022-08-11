@@ -47,7 +47,8 @@ export class AddStockDetailsComponent implements OnInit {
     updated_date: null,
     created_by: "Admin",
     updated_by: "",
-    status: 1
+    status: 1,
+    action: ""
   }
   constructor(private stockService: StockDetailsService, private toastr: ToastrService, private uploadFileToFireStorageService: UploadFileToFireStorageService,
     private modalService: NgbModal, private router: Router) { }
@@ -65,6 +66,7 @@ export class AddStockDetailsComponent implements OnInit {
       this.stockDetailsArray = data.map(e => {
         const data = e.payload.doc.data();
         let id = e.payload.doc.id;
+        data['doc_id'] = id;
         return { id, ...(data as Object) } as StockDetailsModel;
       });
       console.log("Firedata ::: ", this.stockDetailsArray);
@@ -72,13 +74,13 @@ export class AddStockDetailsComponent implements OnInit {
   }
   submitAddStockForm() {
     this.loading = true;
-    this.stockModel.updated_date=new Date();
+    this.stockModel.updated_date = new Date();
     if (this.stockModel.action == "edit") {
       this.stockService.updateStock(this.stockModel);
       this.toastr.success('Stock updated successfully!', 'Success');
       this.clearForm();
       this.loading = false;
-      this.stockModel.action="";
+      this.stockModel.action = "";
     } else {
       this.stockService.createStock(this.stockModel).then(data => {
         this.toastr.success('Stock created successfully!', 'Success');
@@ -99,7 +101,8 @@ export class AddStockDetailsComponent implements OnInit {
       updated_date: null,
       created_by: "Admin",
       updated_by: "",
-      status: 1
+      status: 1,
+      action: ""
     }
   }
   selectAllStocks() {
@@ -109,14 +112,24 @@ export class AddStockDetailsComponent implements OnInit {
     return stockId === "1" ? "Active" : "Deactivated";
   }
   deactivateStock(stockModel) {
-
+    let msg = "";
+    if (stockModel.status === 0) {
+      stockModel.status = 1;
+      msg = "Stock activated successfully!";
+    } else {
+      stockModel.status = 0;
+      msg = "Stock deactivated successfully!";
+    }
+    this.stockService.updateStock(stockModel);
+    this.toastr.success(msg, 'Success');
   }
   deleteStock(stockModel) {
-
+    this.stockService.deleteStock(stockModel);
+    this.toastr.success('Stock deleted successfully!', 'Success');
   }
   editStock(stockModel) {
-    this.stockModel.action = "edit";
     this.stockModel = stockModel;
+    this.stockModel.action = "edit";
   }
   //Add document
   push_prev_startAt(prev_first_doc) {

@@ -28,7 +28,8 @@ const routes: Routes = [
     {path:'preview',component:BlogPostComponent},
     {path:'add-stock',component:AddStockDetailsComponent},
     {path:'add-quality',component:AddQualityReportComponent},
-    {path:'**',component:BlogListComponent}
+    {path:'aboutus',component:AocBlogComponent},
+    {path:'**',component:HomePageComponent}
   ]} 
 ];
 

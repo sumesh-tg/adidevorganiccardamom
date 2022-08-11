@@ -72,9 +72,9 @@ export class UploadFileToFireStorageService {
   async uploadFileToFireStorage(fileToUpload): Promise<Observable<String>> {
     var n = Date.now();
     const file = fileToUpload;
-    const filePath = `aeons-assets/${n}`;
+    const filePath = `adidev-assets/${n}`;
     const fileRef = this.storage.ref(filePath);
-    this.task = this.storage.upload(`aeons-assets/${n}`, file);
+    this.task = this.storage.upload(`adidev-assets/${n}`, file);
     this.percentage = this.task.percentageChanges();
     this.downloadURL2 = (await this.task).downloadURL;
     this.uploadState = this.task.snapshotChanges().pipe(map(s => s.state));
