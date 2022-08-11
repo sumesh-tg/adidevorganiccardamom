@@ -11,5 +11,5 @@ export class StockDetailsModel {
     updated_by:string;
     selected?:boolean;
     status:number;
-    action?:string;
+    action:string;
 }

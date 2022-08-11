@@ -47,7 +47,8 @@ export class AddStockDetailsComponent implements OnInit {
     updated_date: null,
     created_by: "Admin",
     updated_by: "",
-    status: 1
+    status: 1,
+    action:""
   }
   constructor(private stockService: StockDetailsService, private toastr: ToastrService, private uploadFileToFireStorageService: UploadFileToFireStorageService,
     private modalService: NgbModal, private router: Router) { }
@@ -99,7 +100,8 @@ export class AddStockDetailsComponent implements OnInit {
       updated_date: null,
       created_by: "Admin",
       updated_by: "",
-      status: 1
+      status: 1,
+      action:""
     }
   }
   selectAllStocks() {
@@ -112,11 +114,12 @@ export class AddStockDetailsComponent implements OnInit {
 
   }
   deleteStock(stockModel) {
-
+    this.stockService.deleteStock(stockModel);
+    this.toastr.success('Stock deleted successfully!', 'Success');
   }
   editStock(stockModel) {
-    this.stockModel.action = "edit";
     this.stockModel = stockModel;
+    this.stockModel.action = "edit";
   }
   //Add document
   push_prev_startAt(prev_first_doc) {

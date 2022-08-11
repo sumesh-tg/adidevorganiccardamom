@@ -13,7 +13,7 @@ export class StockDetailsService {
   constructor(private firestore: AngularFirestore) { }
   getStocks() {
     return this.firestore.collection(this.STOCK_COLLECTION_NAME, ref => ref
-      .limit(5)
+      .limit(30)
       .orderBy('created_date', 'desc')).snapshotChanges();
   }
   nextPage(lastInResponse) {
@@ -33,7 +33,7 @@ export class StockDetailsService {
     return this.firestore.collection(this.STOCK_COLLECTION_NAME).add(stockModel);
   }
   updateStock(stockModel: StockDetailsModel) {
-    delete stockModel.id;
+    // delete stockModel.id;
     this.firestore.doc(this.STOCK_COLLECTION_NAME + '/' + stockModel.id).update(stockModel);
   }
   deleteStock(stockModel: StockDetailsModel) {
