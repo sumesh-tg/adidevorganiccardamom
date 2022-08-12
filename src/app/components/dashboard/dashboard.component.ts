@@ -7,6 +7,7 @@ import { FooterComponent } from './footer/footer.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { AddStockDetailsComponent } from './forms/add-stock-details/add-stock-details.component';
 import { AddQualityReportComponent } from './forms/add-quality-report/add-quality-report.component';
+import { AocBlogComponent } from './body/aoc-blog/aoc-blog.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -31,7 +32,8 @@ export class DashboardComponent implements OnInit {
     (componentRef instanceof ContactUsComponent) ? this.breadcrumbTxt = "Contact Us" : this.breadcrumbTxt = this.breadcrumbTxt;
     (componentRef instanceof AddQualityReportComponent) ? this.breadcrumbTxt = "Quality Report" : this.breadcrumbTxt = this.breadcrumbTxt;
     (componentRef instanceof AddStockDetailsComponent) ? this.breadcrumbTxt = "Stock Details" : this.breadcrumbTxt = this.breadcrumbTxt;
-    // setTimeout(() => {
+    (componentRef instanceof AocBlogComponent) ? this.breadcrumbTxt = "Blog" : this.breadcrumbTxt = this.breadcrumbTxt;
+    // setTimeout(() => { 
     //   this.sidebarCloseBtn.nativeElement.click();
     //   }, 200);
 
