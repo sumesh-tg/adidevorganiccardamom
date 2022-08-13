@@ -3,7 +3,7 @@
         <!-- Fixed navbar -->
         <nav class="navbar navbar-expand-lg navbar-light fixed-top bg-light  border-bottom nav-border-primary">
             <div class="container">
-            <a class="navbar-brand" href="#"><img id="logo-cardamom" src="assets/images/logo.png" placeholder="Adidev Organic Cardamom"></a>
+            <a class="navbar-brand" routerLink="/dashboard/home" routerLinkActive="active" data-toggle="collapse" data-target=".navbar-collapse.show"><img id="logo-cardamom" src="assets/images/logo.png" placeholder="Adidev Organic Cardamom"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -11,36 +11,36 @@
             <div class="collapse navbar-collapse w-100 dual-collapse2 order-1 order-md-0" id="navbarCollapse">
                 <ul class="navbar-nav ml-auto text-center">
                     <li class="main-menu nav-item active" routerLinkActive="active-page">
-                        <a class="nav-link" routerLink="/dashboard/home" routerLinkActive="active">
+                        <a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show" routerLink="/dashboard/home" routerLinkActive="active">
                             <!-- <i class="material-icons-outlined">home</i> -->
                             Home</a>
                         <!-- <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a> -->
                     </li>
                     <li class="main-menu nav-item">
-                        <a class="nav-link" href="javascript:void(0);" id="stock-details-menu">
+                        <a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show"  href="javascript:void(0);" id="stock-details-menu">
                             <!-- <i class="material-icons-outlined">info</i> -->
                                 Stock Details</a>
                         <!-- <a class="nav-link" href="#">About Us</a> -->
                     </li>
                     <li class="main-menu nav-item">
-                        <a class="nav-link" href="javascript:void(0);" id="quality-report-menu">
+                        <a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show" href="javascript:void(0);" id="quality-report-menu">
                             <!-- <i class="material-icons-outlined">info</i> -->
                                 Quality Report</a>
                         <!-- <a class="nav-link" href="#">About Us</a> -->
                     </li>
                     <li class="main-menu nav-item" routerLinkActive="active-page">
-                        <a class="nav-link" routerLink="/dashboard/aboutus" routerLinkActive="active">
+                        <a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show" routerLink="/dashboard/aboutus" routerLinkActive="active">
                             <!-- <i class="material-icons-outlined">info</i> -->
                                 About Us</a>
                         <!-- <a class="nav-link" href="#">About Us</a> -->
                     </li>
                     <li class="main-menu nav-item" routerLinkActive="active-page">
-                        <a class="nav-link" routerLink="/dashboard/contact-us" routerLinkActive="active">
+                        <a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show" routerLink="/dashboard/contact-us" routerLinkActive="active">
                             <!-- <i class="material-icons-outlined">mail</i> -->
                             Contact Us</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link" id="dark-theme-toggle"><i
+                        <a href="#" data-toggle="collapse" data-target=".navbar-collapse.show" class="nav-link" id="dark-theme-toggle"><i
                                 class="material-icons-outlined">brightness_2</i><i
                                 class="material-icons">brightness_2</i></a>
                     </li>
