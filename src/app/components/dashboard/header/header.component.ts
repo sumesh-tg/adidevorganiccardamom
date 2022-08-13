@@ -28,6 +28,9 @@ export class HeaderComponent implements OnInit {
           scrollTop: $('#qualityReportSection').offset().top
       }, 'slow');
     });
+    $('#navbarCollapse .navbar-nav>li>a').on('click', function(){
+      // $('navbarCollapse').collapse('hide');
+  });
     });
   }
   navigateToStock() {

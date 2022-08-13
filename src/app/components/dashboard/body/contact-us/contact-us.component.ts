@@ -12,7 +12,7 @@ export class ContactUsComponent implements OnInit {
 
   ngOnInit(): void {
     console.log("test email send");
-    this.emailService.sendMail();
+    // this.emailService.sendMail();
   }
 
 }
