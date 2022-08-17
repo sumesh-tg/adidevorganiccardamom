@@ -1,0 +1,56 @@
+
+  <!-- Stock details -->
+  <div class="card text-center mt-5" #stockDetailsSection id="stockDetailsSection" *ngIf="enableStockSection">
+    <div class="card-header">
+      Stock Details
+    </div>
+    <div class="card-body">
+      <div class="card-deck">
+        <div class="card" *ngFor="let stock of activeStockDetailsArray;let index=index">
+          <div style="width: 100%;height:180px" class="text-light d-flex align-items-center justify-content-center"
+            [ngClass]="chooseBackgroundColor(index)">
+            <h2 class="">{{stock.size}}mm</h2>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">{{stock.size}}mm Size</h5>
+            <p class="card-text">
+              PRICE (per 1 kg) : {{stock.price}} <br>
+              STOCK (kg) : {{stock.stock}}
+            </p>
+          </div>
+          <div class="card-footer">
+            <small class="text-muted" *ngIf="stock.updated_date">Last updated {{stock.updated_date.seconds * 1000 |
+              timeago:'live'}}</small>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- <div class="table-responsive">
+        <table class="table table-sm table-light table-hover">
+          <thead class="thead-light">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">PRICE (per 1 kg)</th>
+              <th scope="col">SIZE (mm)</th>
+              <th scope="col">STOCK (kg)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let stock of activeStockDetailsArray;let index=index">
+              <th scope="row">{{index+1}}</th>
+              <td>{{stock.price}}</td>
+              <td>{{stock.size}}</td>
+              <td>{{stock.stock}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div> -->
+      <a href="https://wa.me/919746829532?text=https%3A%2F%2Fadidevorganiccardamom.com%2F%0AHi%2C%0AI%20would%20like%20to%20know%20more%20about%20your%20products..." target="_blank" class="btn btn-primary mt-2"><i
+          class="fa fa-whatsapp my-float m-2"></i>Order now!</a>
+    </div>
+    <div class="card-footer text-muted">
+      Available in stocks now!
+    </div>
+  </div>
+  <!-- End stock details -->
