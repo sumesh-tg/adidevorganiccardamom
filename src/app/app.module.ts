@@ -40,6 +40,8 @@ import { AdminModule } from './admin/admin.module';
 import { AddStockDetailsComponent } from './components/dashboard/forms/add-stock-details/add-stock-details.component';
 import { AddQualityReportComponent } from './components/dashboard/forms/add-quality-report/add-quality-report.component';
 import { AocBlogComponent } from './components/dashboard/body/aoc-blog/aoc-blog.component';
+import { StockDetailsComponent } from './components/dashboard/body/stock-details/stock-details.component';
+import { QualityReportComponent } from './components/dashboard/body/quality-report/quality-report.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -64,7 +66,9 @@ import { AocBlogComponent } from './components/dashboard/body/aoc-blog/aoc-blog.
     DeletePostComponent,
     AddStockDetailsComponent,
     AddQualityReportComponent,
-    AocBlogComponent
+    AocBlogComponent,
+    StockDetailsComponent,
+    QualityReportComponent
   ],
   imports: [
     BrowserModule,

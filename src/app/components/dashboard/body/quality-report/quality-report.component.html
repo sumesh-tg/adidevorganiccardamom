@@ -1,0 +1,12 @@
+ <!-- Quality analysis report -->
+ <div class="card mt-5 pt-3" #qualityReportSection id="qualityReportSection" *ngIf="enableQualitySection">
+    <div class="card-body">
+      <h5 class="card-title">Quality Analytical Report</h5>
+      <p class="card-text">The quality of spices produced and processed from Regional Quality Evaluation Labarotary
+        using the samples collected from our field and the results are shown below.</p>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
+    <img class="card-img-bottom" src="{{qualityReportModel.report_img_url}}" alt="Card image cap"
+      id="quality-report-img">
+  </div>
+  <!-- end quality analysis report -->

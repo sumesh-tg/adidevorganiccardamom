@@ -12,6 +12,8 @@ import { DeletePostComponent } from './components/dashboard/forms/delete-post/de
 import { AddStockDetailsComponent } from './components/dashboard/forms/add-stock-details/add-stock-details.component';
 import { AddQualityReportComponent } from './components/dashboard/forms/add-quality-report/add-quality-report.component';
 import { AocBlogComponent } from './components/dashboard/body/aoc-blog/aoc-blog.component';
+import { StockDetailsComponent } from './components/dashboard/body/stock-details/stock-details.component';
+import { QualityReportComponent } from './components/dashboard/body/quality-report/quality-report.component';
 
 
 const routes: Routes = [
@@ -29,6 +31,8 @@ const routes: Routes = [
     {path:'add-stock',component:AddStockDetailsComponent},
     {path:'add-quality',component:AddQualityReportComponent},
     {path:'aboutus',component:AocBlogComponent},
+    {path:'stock-details',component:StockDetailsComponent},
+    {path:'quality-report',component:QualityReportComponent},
     {path:'**',component:HomePageComponent}
   ]} 
 ];
