@@ -17,23 +17,23 @@ import { QualityReportComponent } from './components/dashboard/body/quality-repo
 
 
 const routes: Routes = [
-  {path:"",redirectTo:"/dashboard/home",pathMatch:"full"},
+  {path:"xxx",redirectTo:"/dashboard/home",pathMatch:"full"},
   {path:"dashboard" , component :DashboardComponent,children:[
-    {path:"",redirectTo:"/dashboard/blog",pathMatch:"full"},
-    {path:'blog',component:AocBlogComponent},
-    {path:'home',component:HomePageComponent},
-    {path:'contact-us',component:ContactUsComponent},
-    {path:'add-vendor',component:AddVendorComponent},
-    {path:'add-post',component:AddPostComponent},
-    {path:'blog-post',component:BlogPostComponent},
-    {path:'delete-post',component:DeletePostComponent},
-    {path:'preview',component:BlogPostComponent},
-    {path:'add-stock',component:AddStockDetailsComponent},
-    {path:'add-quality',component:AddQualityReportComponent},
-    {path:'aboutus',component:AocBlogComponent},
-    {path:'stock-details',component:StockDetailsComponent},
-    {path:'quality-report',component:QualityReportComponent},
-    {path:'**',component:HomePageComponent}
+    {path:"xx",redirectTo:"/dashboard/blog",pathMatch:"full"},
+    {path:'blogxx',component:AocBlogComponent},
+    {path:'homexx',component:HomePageComponent},
+    {path:'contact-usxx',component:ContactUsComponent},
+    {path:'add-vendorxx',component:AddVendorComponent},
+    {path:'add-postxx',component:AddPostComponent},
+    {path:'blog-postxx',component:BlogPostComponent},
+    {path:'delete-postxx',component:DeletePostComponent},
+    {path:'previewxx',component:BlogPostComponent},
+    {path:'add-stockxx',component:AddStockDetailsComponent},
+    {path:'add-qualityxx',component:AddQualityReportComponent},
+    {path:'aboutusxx',component:AocBlogComponent},
+    {path:'stock-detailsxx',component:StockDetailsComponent},
+    {path:'quality-reportxx',component:QualityReportComponent},
+    {path:'*xx*',component:HomePageComponent}
   ]} 
 ];
 
